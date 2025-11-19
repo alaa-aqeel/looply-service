@@ -1,0 +1,11 @@
+CREATE TABLE clients (
+    id UUID PRIMARY KEY,
+    name VARCHAR(200) NOT NULL UNIQUE,
+    secret_key TEXT NOT NULL,
+
+    ai_commands TEXT[] NOT NULL DEFAULT '{}',
+
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    active BOOLEAN NOT NULL DEFAULT FALSE
+);
