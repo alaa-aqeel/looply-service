@@ -4,13 +4,14 @@ import (
 	"context"
 
 	domain_models "github.com/alaa-aqeel/looply-app/src/core/Domain/models"
+	"github.com/alaa-aqeel/looply-app/src/shared"
 )
 
 type FilterClients struct {
-	Limit  uint64 `json:"limit" form:"limit"`
-	Offset uint64 `json:"offset" form:"offset"`
-	Name   string `json:"name" form:"name"`
-	Active *bool  `json:"active" form:"active"`
+	Limit  int64                   `json:"limit" form:"limit"`
+	Offset int64                   `json:"offset" form:"offset"`
+	Name   shared.Optional[string] `json:"name" form:"name"`
+	Active shared.Optional[bool]   `json:"active" form:"active"`
 }
 
 type ClientRepoPort interface {

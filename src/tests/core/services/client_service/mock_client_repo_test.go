@@ -4,6 +4,7 @@ import (
 	"context"
 
 	domain_models "github.com/alaa-aqeel/looply-app/src/core/Domain/models"
+	"github.com/alaa-aqeel/looply-app/src/core/ports"
 )
 
 type MockClientRepo struct {
@@ -17,4 +18,16 @@ func (m *MockClientRepo) Create(ctx context.Context, client *domain_models.Clien
 	}
 	// default behavior
 	return client, nil
+}
+
+func (m *MockClientRepo) FindById(ctx context.Context, id string) (*domain_models.Client, error) {
+	return nil, nil
+}
+
+func (m *MockClientRepo) ClientExists(ctx context.Context, id, secretKey string) (bool, error) {
+	return false, nil
+}
+
+func (m *MockClientRepo) GetAll(ctx context.Context, filter ports.FilterClients) ([]*domain_models.Client, error) {
+	return nil, nil
 }

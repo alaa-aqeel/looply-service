@@ -17,11 +17,11 @@ func (r *ClientRepo) query() squirrel.SelectBuilder {
 
 func (r *ClientRepo) filter(filter ports.FilterClients) squirrel.SelectBuilder {
 	query := r.query()
-	if filter.Name != "" {
-		query = query.Where(squirrel.ILike{"name": "%" + filter.Name + "%"})
+	if filter.Name.IsSet {
+		query = query.Where(squirrel.ILike{"name": "%" + filter.Name.Value + "%"})
 	}
-	if filter.Active != nil {
-		query = query.Where(squirrel.Eq{"active": filter.Active})
+	if filter.Active.IsSet {
+		query = query.Where(squirrel.Eq{"active": filter.Active.Value})
 	}
 
 	return query

@@ -13,8 +13,8 @@ func (r *ClientRepo) scan(rows pgx.Row) (*domain_models.Client, error) {
 		&client.ID,
 		&client.Name,
 		&client.SecretKey,
-		&client.AiCommands,
 		&client.Active,
+		&client.AiCommands,
 		&client.CreatedAt,
 		&client.UpdatedAt,
 	)
