@@ -29,3 +29,16 @@ func (s *ClientService) CreateClient(cmd domain_commands.CreateClientCommand) (*
 		Active:     true,
 	})
 }
+
+func (s *ClientService) FindById(id string) (*domain_models.Client, error) {
+
+	return s.repo.FindById(context.Background(), id)
+}
+
+func (s *ClientService) GetAll(limit, page int64) ([]*domain_models.Client, error) {
+
+	return s.repo.GetAll(context.Background(), ports.FilterClients{
+		Limit:  uint64(limit),
+		Offset: uint64((page - 1) * limit),
+	})
+}

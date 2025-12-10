@@ -45,6 +45,11 @@ func main() {
 		log.Fatal(err)
 	}
 
+	client, err = service.ClientService().FindById(client.ID)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	fmt.Println(client.ID)
 	fmt.Println(client.SecretKey)
 	fmt.Println(client.Name)
