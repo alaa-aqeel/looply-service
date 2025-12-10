@@ -6,9 +6,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/alaa-aqeel/looply-app/src/adapters/database/logger"
 	database "github.com/alaa-aqeel/looply-app/src/adapters/database/pgsql"
 	"github.com/alaa-aqeel/looply-app/src/adapters/database/repository"
+	"github.com/alaa-aqeel/looply-app/src/adapters/logger"
 	domain_commands "github.com/alaa-aqeel/looply-app/src/core/Domain/commands"
 	"github.com/alaa-aqeel/looply-app/src/core/services"
 	"github.com/joho/godotenv"
@@ -48,8 +48,4 @@ func main() {
 	fmt.Println(client.ID)
 	fmt.Println(client.SecretKey)
 	fmt.Println(client.Name)
-
-	// d132a384-9af9-4bf0-8c15-423f4e39e32c
-	// 0fa5f2f3-7ade-452a-a808-7dbe51717405
-	// test client 2
 }
