@@ -31,3 +31,19 @@ func (m *MockClientRepo) ClientExists(ctx context.Context, id, secretKey string)
 func (m *MockClientRepo) GetAll(ctx context.Context, filter ports.FilterClients) ([]*domain_models.Client, error) {
 	return nil, nil
 }
+
+func (m *MockClientRepo) Update(ctx context.Context, client *domain_models.Client) error {
+	return nil
+}
+
+func (m *MockClientRepo) UpdateActive(ctx context.Context, id string, active bool) error {
+	return nil
+}
+
+func (m *MockClientRepo) UpdateSecretKey(ctx context.Context, id string, secretKey string) error {
+	return nil
+}
+
+func (m *MockClientRepo) Delete(ctx context.Context, id string) error {
+	return nil
+}

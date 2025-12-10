@@ -9,8 +9,8 @@ import (
 	database "github.com/alaa-aqeel/looply-app/src/adapters/database/pgsql"
 	"github.com/alaa-aqeel/looply-app/src/adapters/database/repository"
 	"github.com/alaa-aqeel/looply-app/src/adapters/logger"
+	domain_commands "github.com/alaa-aqeel/looply-app/src/core/Domain/commands"
 	"github.com/alaa-aqeel/looply-app/src/core/services"
-	"github.com/alaa-aqeel/looply-app/src/shared"
 	"github.com/joho/godotenv"
 )
 
@@ -33,15 +33,14 @@ func main() {
 	repo := repository.NewRepoContainer(db, logger)
 	service := services.NewServiceContainer(repo, logger)
 
-	clients, err := service.ClientService().GetAll(services.ArgsClients{
-		Limit:  shared.SetValue[int64](1),
-		Page:   shared.SetValue[int64](1),
-		Name:   shared.NilValue[string](),
-		Active: shared.NilValue[bool](),
+	client, err := service.ClientService().CreateClient(domain_commands.CreateClientCommand{
+		Name: "Test Client 7",
+		AiCommands: []string{
+			"hi", "no",
+		},
 	})
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println(err)
 	}
-
-	fmt.Println(clients)
+	fmt.Println(client.Name)
 }

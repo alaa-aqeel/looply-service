@@ -18,5 +18,9 @@ type ClientRepoPort interface {
 	FindById(ctx context.Context, id string) (*domain_models.Client, error)
 	ClientExists(ctx context.Context, id, secretKey string) (bool, error)
 	GetAll(ctx context.Context, filter FilterClients) ([]*domain_models.Client, error)
+	Save(ctx context.Context, client *domain_models.Client) error
+	UpdateActive(ctx context.Context, id string, active bool) error
+	UpdateSecretKey(ctx context.Context, id string, secretKey string) error
+	Delete(ctx context.Context, id string) error
 	Create(ctx context.Context, client *domain_models.Client) (*domain_models.Client, error)
 }
